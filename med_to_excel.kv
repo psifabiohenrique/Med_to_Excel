@@ -1,0 +1,70 @@
+<Start@ScreenManager>:
+    Screen1:
+    Chooser_Archive:
+    Chooser_Sieve:
+
+<Screen1>:
+    name: 'screen1'
+
+    BoxLayout:
+        padding: 100
+        spacing: 30
+        orientation: 'vertical'
+        BoxLayout:
+            orientation: 'vertical'
+            Button:
+                text: 'Choose MPC Archive'
+                on_release: root.manager.current ='choose_archive' 
+        BoxLayout:
+            orientation: 'vertical'
+            Button:
+                text: 'Choose Sieve Archive'
+                on_release: root.manager.current = 'choose_sieve'
+        BoxLayout:
+            orientation: 'vertical'
+            Button:
+                text: 'Copy'
+                on_release: app.copy()
+            Label:
+                id: label_copy
+                text: app.label_copy 
+
+<Chooser_Archive>:
+
+    name: 'choose_archive'
+    BoxLayout:
+        padding: 30
+        spacing: 30
+        orientation: 'vertical'
+        FileChooserListView:
+            id: file_chooser_archive
+        BoxLayout:
+            size_hint: 1, .1
+            Button:
+                text: 'Select'
+                on_press: app.load_archive(file_chooser_archive.path, file_chooser_archive.selection)
+                on_release: root.manager.current = 'screen1'
+            Button:
+                text: 'Back'
+                on_press: root.manager.current = 'screen1'
+
+<Chooser_Sieve>:
+    name: 'choose_sieve'
+    BoxLayout:
+        padding: 30
+        spacing: 30
+        orientation: 'vertical'
+        FileChooserListView:
+            id: file_chooser_sieve
+        BoxLayout:
+            size_hint: 1, .1
+            Button:
+                text: 'Select'
+                on_press: app.load_sieve(file_chooser_sieve.path, file_chooser_sieve.selection)
+                on_release: root.manager.current = 'screen1'
+            Button:
+                text: 'Back'
+                on_release: root.manager.current = 'screen1'
+
+
+Start:
