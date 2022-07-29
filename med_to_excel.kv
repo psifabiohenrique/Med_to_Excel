@@ -1,4 +1,4 @@
-<Start@ScreenManager>:
+<Start>:
     Screen1:
     Chooser_Archive:
     Chooser_Sieve:
@@ -92,6 +92,7 @@
                 text: 'Select'
                 on_press: app.load_sieve(file_chooser_sieve.path, file_chooser_sieve.selection)
                 on_release: root.manager.current = 'screen1'
+                on_release: app.clear_label()
             Button:
                 text: 'Back'
                 on_release: root.manager.current = 'screen1'
