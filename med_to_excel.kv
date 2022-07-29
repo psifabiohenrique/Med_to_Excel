@@ -68,6 +68,7 @@
                 text: 'Select'
                 on_press: app.load_archive(file_chooser_archive.path, file_chooser_archive.selection)
                 on_release: root.manager.current = 'screen1'
+                on_release: app.clear_label()
             Button:
                 text: 'Back'
                 on_press: root.manager.current = 'screen1'

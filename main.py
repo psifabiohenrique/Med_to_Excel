@@ -39,6 +39,9 @@ class Med_to_Excel(App):
     
     def column_or_row(self, tb):
         self.columnOrRow = tb.state
+    
+    def clear_label(self):
+        self.label_copy = ''
 
 
 if __name__ == '__main__':
