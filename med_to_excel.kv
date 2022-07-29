@@ -7,27 +7,46 @@
     name: 'screen1'
 
     BoxLayout:
-        padding: 100
-        spacing: 30
-        orientation: 'vertical'
+        
         BoxLayout:
+            padding: 100
+            spacing: 30
             orientation: 'vertical'
-            Button:
-                text: 'Choose MPC Archive'
-                on_release: root.manager.current ='choose_archive' 
-        BoxLayout:
-            orientation: 'vertical'
-            Button:
-                text: 'Choose Sieve Archive'
-                on_release: root.manager.current = 'choose_sieve'
-        BoxLayout:
-            orientation: 'vertical'
-            Button:
-                text: 'Copy'
-                on_release: app.copy()
-            Label:
-                id: label_copy
-                text: app.label_copy 
+            BoxLayout:
+                orientation: 'vertical'
+                Button:
+                    text: 'Escolha o arquivo MedPC'
+                    on_release: root.manager.current ='choose_archive' 
+            BoxLayout:
+                orientation: 'vertical'
+                Button:
+                    text: 'Escolha o crivo'
+                    on_release: root.manager.current = 'choose_sieve'
+            BoxLayout:
+                ToggleButton:
+                    size_hint: None, None
+                    pos_hint: {'center_x': 1, 'center_y': 1}
+                    height: 20
+                    width: 20
+                    on_state: app.column_or_row(self)
+                Label:
+                    pos_hint: {'center_x': 1, 'center_y': 1}
+                    text: 'Dados na mesma linha?'
+            BoxLayout:
+                orientation: 'vertical'
+                Button:
+                    text: 'Copy'
+                    on_release: app.copy()
+                Label:
+                    id: label_copy
+                    text: app.label_copy 
+        Label:
+            padding: 30, 30
+            halign: 'justify'
+            valign: 'center'
+            text_size: self.size
+            font_size: 20
+            text: """Olá, bem vindo ao Med to Excel.\n\n\n Este programa foi desenvolvido para importação dos dados do MedPC para o Excel.\n\n Selecione no botão superior o arquivo do MedPC onde os dados estão salvos e selecione no botão intermediário o crivo.\n\n Este programa foi desenvolvido por Fábio Henrique, para mais informações acesse: https://github.com/psifabiohenrique/Med_to_Excel"""
 
 <Chooser_Archive>:
 
@@ -36,8 +55,13 @@
         padding: 30
         spacing: 30
         orientation: 'vertical'
-        FileChooserListView:
+        Label:
+            size_hint: 1, .1
+            font_size: 30
+            text: 'Escolha o arquivo do MedPC'
+        FileChooserIconView:
             id: file_chooser_archive
+            path: './'
         BoxLayout:
             size_hint: 1, .1
             Button:
@@ -54,8 +78,13 @@
         padding: 30
         spacing: 30
         orientation: 'vertical'
-        FileChooserListView:
+        Label:
+            size_hint: 1, .1
+            font_size: 30
+            text: 'Escolha o crivo'
+        FileChooserIconView:
             id: file_chooser_sieve
+            path: './'
         BoxLayout:
             size_hint: 1, .1
             Button:

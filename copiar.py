@@ -1,23 +1,29 @@
 from pandas import DataFrame
+from pyperclip import copy
 
 
 
-def calc(archive, sieve):
+def calc(archive, sieve, columnOrRow):
     sieve_list = []
     a, b, c, d, e, f, g, h, I, j, k, l, m, n, o, p, q, r, s, t, u, v, x, w, y, z = [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [] 
     index_list = 'A:', 'B:', 'C:', 'D:', 'E:', 'F:', 'G:', 'H:', 'I:', 'J:', 'K:', 'L:', 'M:', 'N:', 'O:', 'P:', 'Q:', 'R:', 'S:', 'T:', 'U:', 'V:', 'X:', 'Y:', 'W:', 'Z:' 
     index_list_number = ['0:', '5:', '10:', '15:', '20:', '25:', '30:', '35:', '40:', '45:', '50:', '55:', '60:', '65:', '70:', '75:', '80:', '85:', '90:', '95:', '100:', '105:', '110:', '115:', '120:', '125:', '130:', '135:', '140:', '145:', '150:', '155:', '160:', '165:', '170:', '175:', '180:', '185:', '190:', '195:', '200:', '205:', '210:', '215:', '220:', '225:', '230:', '235:', '240:', '245:', '250:', '255:', '260:', '265:', '270:', '275:', '280:', '285:', '290:', '295:']
     index_match = ''
     start_date = ''
+    full_item = None
     for i in sieve:
-        sieve_list.append(i.split())
+        if 'FULL' in i:
+            temp = i.split('-')
+            full_item = temp[0]
+            print(full_item)
+        else:
+            sieve_list.append(i.split())
 
     for i in archive:
         
         if "File" in i:
             i  = i.replace('C:\\', '')
         temp = i.split()
-        print(temp)
         if len(temp) == 3:
             if 'Start' == temp[0] and 'Date:' == temp[1]:
                 start_date = temp[2]
@@ -81,9 +87,27 @@ def calc(archive, sieve):
         if i != []:
             temp = i[0].split('-')
             data.append(data_dict[temp[0].lower()][int(temp[1])].replace('.', ','))
-    result = DataFrame({start_date: data})
-    result.to_clipboard(excel=True, index=False)
-
+    
+    if full_item != None:
+        temp = str(start_date)
+        for i in data_dict[full_item.lower()]:
+            i = i.replace('.', ',')
+            temp += f'\t{str(i)}'
+        copy(temp)
+    else:
+        if columnOrRow == 'down':
+            # data.insert(0,start_date)
+            # result = DataFrame(data)
+            # result = result.transpose()
+            temp = str(start_date)
+            for i in data:
+                temp += f'\t{str(i)}'
+            result = temp
+            copy(result)
+        else:
+            result = DataFrame({start_date: data})
+            result.to_clipboard(excel=True, index=False)
+    
 
     # Resetando todas as variáveis
     sieve_list = []

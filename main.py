@@ -1,9 +1,8 @@
 from kivy.app import App
-from kivy.uix.screenmanager import Screen, ScreenManager
-from kivy.properties import ObjectProperty, StringProperty
+from kivy.uix.screenmanager import ScreenManager, Screen
+from kivy.properties import ObjectProperty, StringProperty, OptionProperty
 import os 
 from copiar import calc
-
 
 
 class Screen1(Screen):
@@ -25,6 +24,7 @@ class Med_to_Excel(App):
     archive = ObjectProperty(None)
     sieve = ObjectProperty(None)
     label_copy = StringProperty('')
+    columnOrRow = None
 
     def load_archive(self, path, filename):
         self.archive =  open(os.path.join(path, filename[0]))
@@ -35,7 +35,10 @@ class Med_to_Excel(App):
 
 
     def copy(self):
-        self.label_copy = calc(self.archive, self.sieve)
+        self.label_copy = calc(self.archive, self.sieve, self.columnOrRow)
+    
+    def column_or_row(self, tb):
+        self.columnOrRow = tb.state
 
 
 if __name__ == '__main__':
