@@ -1,5 +1,4 @@
 # -*- mode: python ; coding: utf-8 -*-
-
 from kivy_deps import sdl2, glew
 
 block_cipher = None
@@ -10,7 +9,7 @@ a = Analysis(
     pathex=[],
     binaries=[],
     datas=[],
-    hiddenimports=[],
+    hiddenimports=["win32timezone"],
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],
@@ -32,15 +31,16 @@ exe = EXE(
     bootloader_ignore_signals=False,
     strip=False,
     upx=True,
-    console=True,
+    console=False,
     disable_windowed_traceback=False,
     argv_emulation=False,
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
+    icon='Icone.ico',
 )
 coll = COLLECT(
-    exe, Tree('D:\MedToExcel\Med_to_Excel'),
+    exe, Tree('.\\'),
     a.binaries,
     a.zipfiles,
     a.datas,
