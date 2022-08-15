@@ -1,0 +1,88 @@
+[[package]]
+name = "cx-freeze"
+version = "6.11.1"
+description = "Create standalone executables from Python scripts"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+lief = {version = ">=0.11.5", markers = "sys_platform == \"win32\" and python_version <= \"3.10\""}
+packaging = ">=21.0"
+patchelf = {version = ">=0.12", markers = "sys_platform == \"linux\""}
+
+[package.extras]
+test = ["pytest-timeout (>=1.4.2)", "pytest-mock (>=3.6.1)", "pytest-cov (==3.0.0)", "pytest (>=7.0.1)", "pygments (>=2.11.2)", "nose (==1.3.7)"]
+doc = ["sphinx-rtd-theme (==1.0.0)", "sphinx (>=5.0.1,<6.0.0)"]
+dev = ["cibuildwheel (==2.6.1)", "pylint (>=2.13.0)", "pre-commit (>=2.17.0)", "bump2version (>=1.0.1)"]
+
+[[package]]
+name = "lief"
+version = "0.12.1"
+description = "Library to instrument executable formats"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[[package]]
+name = "packaging"
+version = "21.3"
+description = "Core utilities for Python packages"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+pyparsing = ">=2.0.2,<3.0.5 || >3.0.5"
+
+[[package]]
+name = "patchelf"
+version = "0.15.0.0"
+description = "A small utility to modify the dynamic linker and RPATH of ELF executables."
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.extras]
+test = ["importlib-metadata", "pytest"]
+
+[[package]]
+name = "pyparsing"
+version = "3.0.9"
+description = "pyparsing module - Classes and methods to define and execute parsing grammars"
+category = "main"
+optional = false
+python-versions = ">=3.6.8"
+
+[package.extras]
+diagrams = ["jinja2", "railroad-diagrams"]
+
+[[package]]
+name = "pyperclip"
+version = "1.8.2"
+description = "A cross-platform clipboard module for Python. (Only handles plain text for now.)"
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
+name = "pysimplegui"
+version = "4.60.3"
+description = "Python GUIs for Humans. Launched in 2018. It's 2022 & PySimpleGUI is an ACTIVE & supported project. Super-simple to create custom GUI's. 325+ Demo programs & Cookbook for rapid start. Extensive documentation. Main docs at www.PySimpleGUI.org. Fun & your success are the focus. Examples using Machine Learning (GUI, OpenCV Integration), Rainmeter Style Desktop Widgets, Matplotlib + Pyplot, PIL support, add GUI to command line scripts, PDF & Image Viewers. Great for beginners & advanced GUI programmers."
+category = "main"
+optional = false
+python-versions = "*"
+
+[metadata]
+lock-version = "1.1"
+python-versions = "^3.10"
+content-hash = "32e029a6e7ff476a96cc21d28a6606ef333a2e56c7f8143fd76716137de8e82a"
+
+[metadata.files]
+cx-freeze = []
+lief = []
+packaging = []
+patchelf = []
+pyparsing = []
+pyperclip = []
+pysimplegui = []

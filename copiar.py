@@ -1,4 +1,3 @@
-from pandas import DataFrame
 from pyperclip import copy
 
 
@@ -69,7 +68,7 @@ def calc(archive, sieve, columnOrRow):
             temp += f'\t{str(i)}'
         copy(temp)
     else:
-        if columnOrRow == 'down':
+        if columnOrRow == True:
             # data.insert(0,row_data['date'])
             # result = DataFrame(data)
             # result = result.transpose()
@@ -79,8 +78,11 @@ def calc(archive, sieve, columnOrRow):
             result = temp
             copy(result)
         else:
-            result = DataFrame({row_data['date']: data})
-            result.to_clipboard(excel=True, index=False)
+            temp = str(row_data['date'])
+            for i in data:
+                temp += f'\n{str(i)}'
+            result = temp
+            copy(result)
     
 
     # Resetando todas as variáveis
