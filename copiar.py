@@ -2,7 +2,7 @@ from pyperclip import copy
 
 
 
-def calc(archive, sieve, columnOrRow):
+def calc(archive, sieve, columnOrRow, virgula):
     sieve_list = []
     row_data = {
         'A:': [], 'B:': [], 'C:': [], 'D:': [],
@@ -58,13 +58,17 @@ def calc(archive, sieve, columnOrRow):
         try:
             if i != []:
                 temp = i[0].split('-')
-                data.append(row_data[f"{temp[0]}:"][int(temp[1])].replace('.', ','))
+                if virgula:
+                    data.append(row_data[f"{temp[0]}:"][int(temp[1])].replace('.', ','))
+                else:
+                    data.append(row_data[f"{temp[0]}:"][int(temp[1])])
         except IndexError:
             return 'Index Incorreto'
     if full_item != None:
         temp = str(row_data['date'])
         for i in row_data[f'{full_item}:']:
-            i = i.replace('.', ',')
+            if virgula:
+                i = i.replace('.', ',')
             temp += f'\t{str(i)}'
         copy(temp)
     else:
