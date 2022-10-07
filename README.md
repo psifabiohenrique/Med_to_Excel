@@ -10,7 +10,7 @@ Rápida descrição do objetivo de fazer esse projeto
 <!-- Inserir imagem com a #vitrinedev ao final do link -->
 ![](https://github.com/psifabiohenrique/Med_to_Excel/blob/main/imagem_programa.png?raw=true#vitrinedev)
 
-## Detalhes do projeto | Project details
+## Project details
 
 This project was developed so that behavior analysts can extract data from MedPc-generated .mpc files for spreadsheets (excel, libreOffice...).
 
@@ -21,6 +21,8 @@ The model is a .txt file containing the data you want to extract. In this file y
 If you want to get all the values within the same DIM, you can create a sieve containing only the DIM followed by "-FULL".
 By default, the program copies the data arranged in a single column to the system's clipboard. If you want to receive the data in a single line, check the option "Receive data on the same line?".
 In Brazil, the standard is to use the comma as a decimal separator, but the program by default copies the values using the period as a separator. Check the "comma?" to receive the data separating the decimals by a comma.
+
+## Detalhes do projeto | 
 
 Este projeto foi desenvolvido para que analistas do comportamento possam extrair os dados dos arquivos .mpc gerados pelo MedPc para planilhas (excel, libreOffice...).
 
