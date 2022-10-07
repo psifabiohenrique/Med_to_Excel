@@ -5,15 +5,15 @@ crivo = ''
 sg.theme('DarkAmber')
 
 layout = [
-    [sg.FileBrowse('Selecionar o crivo!', key='buscar_crivo'), sg.Text('Arquivo: ', key='crivo')],
+    [sg.FileBrowse('Select model', key='buscar_crivo'), sg.Text('File: ', key='crivo')],
     [sg.HorizontalSeparator()],
-    [sg.FileBrowse('Selecionar o MPC!', key='buscar_mpc'), sg.Text('Arquivo: ', key='mpc')],
+    [sg.FileBrowse('Select .mpc file', key='buscar_mpc'), sg.Text('File: ', key='mpc')],
     [sg.HorizontalSeparator()],
-    [sg.Checkbox('Receber dados na mesma linha?', key='linha')],
-    [sg.Button('Copiar Dados', key='botao_buscar'), sg.Checkbox('Virgula?', key='virgula')],
+    [sg.Checkbox('Receive data on the same line?', key='linha')],
+    [sg.Button('Copy data', key='botao_buscar'), sg.Checkbox('Comma?', key='virgula')],
 ]
 
-window = sg.Window('MedPC para Excel', layout, size=(600, 200))
+window = sg.Window('MedPC to Excel', layout, size=(600, 200))
 
 while True:
     event, value = window.read()

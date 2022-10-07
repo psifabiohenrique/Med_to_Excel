@@ -1,7 +1,6 @@
 from pyperclip import copy
 
 
-
 def calc(archive, sieve, columnOrRow, virgula):
     sieve_list = []
     row_data = {
